@@ -1,0 +1,48 @@
+﻿
+@model Customer
+
+@* <table>
+    <tr>
+        <td>
+            First Name
+        </td>
+        <td>
+           @Html.EditorFor(model=>Model.FirstName)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Last Name
+        </td>
+        <td>
+            @Html.EditorFor(model=> Model.LastName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" value="Create" class="btn btn-primary"/>
+        </td>
+    </tr>
+</table> *@
+
+<h1>Create Customer</h1>
+@using(Html.BeginForm("Create","Cuatomer",FormMethod.Post))
+   {
+    <div class="mb-3">
+        @* <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+        @Html.LabelFor(model=> model.FirstName, new{@class="form-label"})
+        @Html.EditorFor(model=>model.FirstName,new {@class="form-control"})
+    </div>
+    <div class="mb-3">
+       @*  <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1"> *@
+        @Html.LabelFor(model => model.LastName, new { @class = "form-label" })
+        @Html.EditorFor(model => model.LastName, new { @class = "form-control" })
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+@Html.ActionLink("Back To List","Index")

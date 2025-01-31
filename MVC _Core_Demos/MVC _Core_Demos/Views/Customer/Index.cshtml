@@ -1,0 +1,26 @@
+﻿<h1>Customer Profile Page</h1>
+
+
+
+@*
+    using html helper methods to render partial view
+*@
+
+ @* @Html.Partial("_partialView") *@
+@* 
+@{
+    Html.RenderPartial("_partialView")
+}  *@
+
+@*using tag helper to rende partial view*@
+@* <partial name="_partialView"></partial>  *@      
+<partial name="_partialView" />               @* it is also a self closing tag*@
+
+@await Component.InvokeAsync("First",2)
+
+@section sidebar{
+    @Html.ActionLink("Create New", "Create", "Customer")
+    <br />
+    @Html.ActionLink("Details", "Details", "Customer")
+}
+i
