@@ -14,13 +14,19 @@
 
 @*using tag helper to rende partial view*@
 @* <partial name="_partialView"></partial>  *@      
-<partial name="_partialView" />               @* it is also a self closing tag*@
+<partial name="_partialView" />               @*it is also a self closing tag*@
 
 @await Component.InvokeAsync("First",2)
 
 @section sidebar{
     @Html.ActionLink("Create New", "Create", "Customer")
     <br />
-    @Html.ActionLink("Details", "Details", "Customer")
+   @*  @Html.ActionLink("Details", "Details", "Customer") *@
+   <a asp-action="Details" asp-controller="Customer" asp-route-name="Prasad">Details</a>
+   <br />
+   <a asp-action="DetailsByName" asp-controller="Customer" asp-route-name="Prasad">Details by name</a>
 }
-i
+
+<div class="border border-2 bg-primary text-black">
+@await Component.InvokeAsync("Users");         @*Users is component name*@
+</div>

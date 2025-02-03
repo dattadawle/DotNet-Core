@@ -26,6 +26,10 @@ namespace MVC__Core_Demos
 
             app.UseAuthorization();
 
+           /* app.MapControllerRoute(
+               name: "defaultbyname",
+               pattern: "{controller=Customer}/{action=Index}/{name}");*/
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Customer}/{action=Index}/{id?}");

@@ -28,6 +28,14 @@ namespace MVC__Core_Demos.Controllers
             return View("CreateNew");
         }
 
+        [HttpGet("customer/detailsbyname/{name}")]
+        //url customer/detailsbyname/datta
+        public IActionResult DetailsByName(string name)
+        {
+            return View("DetailsByName",name);
+            
+        }
+
         // we do not use this way for dynamic partial view
         //  In mvc Core we have View Component
        /* [HttpGet]
