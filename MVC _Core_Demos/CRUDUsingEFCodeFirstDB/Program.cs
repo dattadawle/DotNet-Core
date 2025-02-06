@@ -1,4 +1,4 @@
-namespace MVC__Core_Demos
+namespace CRUDUsingEFCodeFirstDB
 {
     public class Program
     {
@@ -7,8 +7,8 @@ namespace MVC__Core_Demos
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-         //  builder.Services.AddControllersWithViews(); // registered mvc as a service
-           builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,10 +25,6 @@ namespace MVC__Core_Demos
             app.UseRouting();
 
             app.UseAuthorization();
-
-           /* app.MapControllerRoute(
-               name: "defaultbyname",
-               pattern: "{controller=Customer}/{action=Index}/{name}");*/
 
             app.MapControllerRoute(
                 name: "default",

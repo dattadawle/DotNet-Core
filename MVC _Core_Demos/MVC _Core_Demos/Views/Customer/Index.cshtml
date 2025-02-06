@@ -30,3 +30,22 @@
 <div class="border border-2 bg-primary text-black">
 @await Component.InvokeAsync("Users");         @*Users is component name*@
 </div>
+
+<div class="border border-2 bg-primary text-white p-3">   
+   
+</div>
+
+@* <script>
+    $(function () {
+        $.ajax({
+            url: '@Url.Action("details")',
+            type: 'get',
+            success: function (response) {
+                $('#divDetails').html(response);
+            },
+            error: function (error) {
+                alert('details call failed');
+            }
+        });
+    });
+</script> *@
