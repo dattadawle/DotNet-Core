@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35118.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_MVC _Core_Demos", "MVC _Core_Demos\1_MVC _Core_Demos.csproj", "{E84DECED-E66B-49AA-A59D-C8266EC1A1A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC _Core_Demos", "MVC _Core_Demos\MVC _Core_Demos.csproj", "{E84DECED-E66B-49AA-A59D-C8266EC1A1A0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2_StateManagement", "2_StateManagement\2_StateManagement.csproj", "{A7EC3069-7DD7-4B05-A644-80B01AA862F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_CRUDUsingEFCodeFirstDB", "CRUDUsingEFCodeFirstDB\4_CRUDUsingEFCodeFirstDB.csproj", "{5B7BD062-979F-4E4A-9F5B-9D913488240C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4_CRUDUsingEFCodeFirstDB", "CRUDUsingEFCodeFirstDB\4_CRUDUsingEFCodeFirstDB.csproj", "{5B7BD062-979F-4E4A-9F5B-9D913488240C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
