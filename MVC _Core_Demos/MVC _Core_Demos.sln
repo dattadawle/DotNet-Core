@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4_CRUDUsingEFCodeFirstDB", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{E0039530-B3DE-4E53-9A58-4A92B5AB7D1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{DE4FFC47-380D-47EE-8232-43A5A19E3CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{DE4FFC47-380D-47EE-8232-43A5A19E3CF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstCoreWebAPI", "FirstCoreWebAPI\FirstCoreWebAPI.csproj", "{C8ADEA34-E7E5-4B67-AD9D-1226A0AEB934}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Api", "Web Api", "{C9F14076-4B23-492E-8425-053D9F9868D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,12 +39,17 @@ Global
 		{DE4FFC47-380D-47EE-8232-43A5A19E3CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE4FFC47-380D-47EE-8232-43A5A19E3CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE4FFC47-380D-47EE-8232-43A5A19E3CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8ADEA34-E7E5-4B67-AD9D-1226A0AEB934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8ADEA34-E7E5-4B67-AD9D-1226A0AEB934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8ADEA34-E7E5-4B67-AD9D-1226A0AEB934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8ADEA34-E7E5-4B67-AD9D-1226A0AEB934}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DE4FFC47-380D-47EE-8232-43A5A19E3CF9} = {E0039530-B3DE-4E53-9A58-4A92B5AB7D1F}
+		{C8ADEA34-E7E5-4B67-AD9D-1226A0AEB934} = {C9F14076-4B23-492E-8425-053D9F9868D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC0F8A21-1570-4675-BEBF-165DA21C2BB9}

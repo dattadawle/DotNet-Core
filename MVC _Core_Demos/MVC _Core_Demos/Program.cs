@@ -1,3 +1,6 @@
+using FirstCoreWebAPI.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace MVC__Core_Demos
 {
     public class Program
@@ -9,6 +12,10 @@ namespace MVC__Core_Demos
             // Add services to the container.
          //  builder.Services.AddControllersWithViews(); // registered mvc as a service
            builder.Services.AddControllersWithViews();
+            /* builder.Services.AddDbContext<ApplicationDbContext>(options =>
+   options.UseSqlServer(builder.Configuration.GetConnectionString("B24WEBAPI8TestProject")));*/
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("WEBAPI8TestProject")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,6 +32,7 @@ namespace MVC__Core_Demos
             app.UseRouting();
 
             app.UseAuthorization();
+
 
            /* app.MapControllerRoute(
                name: "defaultbyname",
