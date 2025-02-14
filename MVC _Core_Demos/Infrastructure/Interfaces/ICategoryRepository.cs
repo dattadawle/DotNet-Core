@@ -4,13 +4,13 @@ namespace Infrastructure.Interfaces
 {
     public interface ICategoryRepository
     {
-      Task <IEnumerable<Category>>GetAllAsync();
+      Task <IEnumerable<Category>> GetAllAsync();
 
-        Category GetById(int id);
-        void Create(Category category);
+        Task<Category> GetByIdAsync(int id);
+        Task CreateAsync(Category category);
 
-        void Update(Category category);
+        Task UpdateAsync(Category category);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

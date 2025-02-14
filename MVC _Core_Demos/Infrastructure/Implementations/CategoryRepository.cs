@@ -16,16 +16,16 @@ namespace Infrastructure.Implementations
 
         public CategoryRepository(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context; 
         }
 
-        public void Create(Category category)
+        public async Task CreateAsync(Category category)
         {
            _context.categories.Add(category);
            _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             Category category = _context.categories.Find(id);
 
@@ -37,22 +37,21 @@ namespace Infrastructure.Implementations
         public async Task<IEnumerable<Category>> GetAllAsync()
 
         {
-            return await _context.categories.ToListAsync();    
+            return  _context.categories.ToList(); 
         }
 
-        public void Update(Category category)
+        public async Task UpdateAsync(Category category)
         {
-           _context.categories.Attach(category);
+         _context.categories.Attach(category);
             _context.Entry(category).State= EntityState.Modified;
-            _context.SaveChanges();
+             _context.SaveChanges();
 
         }
 
-       public   Category GetById(int id)
+       public async Task<Category> GetByIdAsync(int id)
         {
-            return _context.categories.Find(id);
+            return  _context.categories.Find(id);
         }
 
-       
     }
 }

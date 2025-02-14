@@ -10,11 +10,11 @@ namespace Services.Interfaces
     {
        Task< IEnumerable<CategoryModel>> GetAllAsync();
 
-        CategoryModel GetById(int id);
-        void Create(CategoryModel category);
+       Task<CategoryModel> GetByIdAsync(int id);
+       Task CreateAsync(CategoryModel category);
 
-        void Update(int id, CategoryModel category);
+       Task UpdateAsync( CategoryModel category);
 
-        void Delete(int id);
+        Task  DeleteAsync(int id);
     }
 }
