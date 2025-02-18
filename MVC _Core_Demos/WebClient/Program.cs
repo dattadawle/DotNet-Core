@@ -1,10 +1,15 @@
+using ClientService.IHttpService.Contract;
+
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 /*builder.Services.AddControllers().AddJsonOptions(config =>
 config.JsonSerializerOptions.PropertyNameCaseInsensitive = true);*/
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 
 var app = builder.Build();
 
