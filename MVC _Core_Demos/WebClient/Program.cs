@@ -10,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 config.JsonSerializerOptions.PropertyNameCaseInsensitive = true);*/
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
+builder.Services.AddHttpClient<HttpClientService>(client => {
+    client.BaseAddress = new Uri(builder.Configuration.GetSection("Apiurl").Value);
+    });
 
 var app = builder.Build();
 

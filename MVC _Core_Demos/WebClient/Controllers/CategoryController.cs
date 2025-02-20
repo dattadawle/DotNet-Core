@@ -110,7 +110,7 @@ namespace WebClient.Controllers
         }
 
         [HttpGet]
-        public  async Task <IActionResult> Edit(int id)
+        public  async Task <IActionResult>Edit(int? id)
             {
             /*  Category category = null;
               using (HttpClient client = new HttpClient())
@@ -124,14 +124,14 @@ namespace WebClient.Controllers
 
                       category= JsonSerializer.Deserialize<Category>(result,new JsonSerializerOptions() { PropertyNameCaseInsensitive =true});
                   }*/
-            Category category = _clientService.GetTAsync<Category>($"category/{id}").Result;
+            Category category = await _clientService.GetTAsync<Category>($"category/{id}");
 
                return View(category);
             }
 
         [HttpPost]
 
-        public async Task< IActionResult>Edit(Category category)
+        public async Task<IActionResult>Edit(Category category)
         {
             /*using (HttpClient client = new HttpClient())
             {
@@ -145,9 +145,13 @@ namespace WebClient.Controllers
                 }
 
             }*/
-           await _clientService.PostAsync<Category>($"category/{category.Id}",category);
+            if (ModelState.IsValid)
+            {
+               var response= await _clientService.PutAsync<Category>($"category/{category.Id}", category);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+           return View(category);
         }
 
         [HttpGet]
@@ -171,7 +175,7 @@ namespace WebClient.Controllers
             return View(category);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [ActionName("Delete")]
         public async Task<IActionResult> DeleteCat(int id)
         {
