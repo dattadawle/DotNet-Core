@@ -39,8 +39,15 @@ public class CategoryService : ICategoryService
         var categories= _mapper.Map<List<CategoryModel>>(dbCategories);
         return categories;
     }
+    /* public async Task<IEnumerable<ProductModel>> GetAllAsync()
+        {
+            var dbProducts =  _productRepository.GetAllAsync();
 
-   
+            var products = _mapper.Map<IEnumerable<ProductModel>>(dbProducts);
+
+            return products;
+        }*/
+
     public async Task<CategoryModel> GetByIdAsync(int id)
     {
         /*Make async if it involves querying a database or any other I/O-bound operation. Even though retrieving a single item is a relatively fast operation, if it involves a database query, it's still beneficial to make it async.*/
