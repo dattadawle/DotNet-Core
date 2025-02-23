@@ -1,6 +1,7 @@
 ﻿using Data;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Interfaces;
 public class ProductRepository : IProductRepository
 {
     ApplicationDbContext _context;
@@ -11,26 +12,25 @@ public class ProductRepository : IProductRepository
     }
     public async Task<List<Product>> GetAllAsync()
     {
-     var prooducts= _context.products.ToList();
-        return prooducts;
+        return await _context.products.ToListAsync(); ;
     }
 
     public async Task CreateAsync(Product product)
     {
         _context.products.Add(product);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(int id)
     {
-        Product product=_context.products.Find(id);
+        Product product=await _context.products.FindAsync(id);
         _context.products.Remove(product);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
     public async Task<Product> GetByIdAsync(int id)
     {
-     return _context.products.Find(id);
+     return await _context.products.FindAsync(id);
        
     }
 

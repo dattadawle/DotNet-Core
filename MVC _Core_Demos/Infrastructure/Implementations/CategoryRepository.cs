@@ -2,11 +2,6 @@
 using Data.Entities;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Implementations
 {
@@ -16,7 +11,7 @@ namespace Infrastructure.Implementations
 
         public CategoryRepository(ApplicationDbContext context)
         {
-            _context = context; 
+            _context = context;
         }
 
         public async Task CreateAsync(Category category)

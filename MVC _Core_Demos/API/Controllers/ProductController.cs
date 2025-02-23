@@ -18,7 +18,7 @@ namespace API.Controllers
         {
             var prod= await _productService.GetAllAsync();
             return Ok(prod);
-        }
+        } 
         [HttpPost]
 
         public async Task<IActionResult> Create(ProductModel productModel)
@@ -32,15 +32,15 @@ namespace API.Controllers
             return BadRequest();
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
 
-        public async Task < IActionResult> Edit([FromRoute]int id,ProductModel productModel) 
+        public async Task < IActionResult> Edit(int id,ProductModel productModel) 
             {
               if(id>0)
             {
                 if (id==productModel.Id)
                 {
-                    if (!ModelState.IsValid)
+                    if (ModelState.IsValid)
                     {
                         await _productService.UpdateAsync(productModel);
                         return Ok();
@@ -51,13 +51,27 @@ namespace API.Controllers
               return BadRequest();
             }
 
-        [HttpDelete]
-        public async  Task<ActionResult> Delete([FromRoute]int id)
+        [HttpDelete("{id:int}")]
+        public async  Task<IActionResult> Delete(int id)
         {
             if (id>0)
             {
             var product= await _productService.GetByIdAsync(id);
                 _productService.DeleteAsync(product);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task <IActionResult> Details(int id)
+        {
+            
+            if (id > 0)
+            {
+              var prod= await _productService.GetByIdAsync(id);
+                return Ok(prod);
             }
             return BadRequest();
         }

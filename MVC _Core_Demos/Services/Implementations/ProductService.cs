@@ -1,12 +1,19 @@
 ﻿
 using AutoMapper;
-using Data.Entities;
 using Infrastructure.Interfaces;
+using Data.Entities;
 
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
-    private readonly IMapper _mapper;
+   private readonly IMapper _mapper;
+
+    public ProductService(IProductRepository productRepository, IMapper mapper)
+    {
+        _productRepository = productRepository;
+        _mapper = mapper;
+        _mapper = mapper;
+    }
 
     public async Task CreateAsync(ProductModel product)
     {
@@ -43,7 +50,6 @@ public class ProductService : IProductService
 
     public async Task UpdateAsync(ProductModel productModel)
     {
-
         var product = _mapper.Map<Product>(productModel);
         await _productRepository.UpdateAsync(product);
     }

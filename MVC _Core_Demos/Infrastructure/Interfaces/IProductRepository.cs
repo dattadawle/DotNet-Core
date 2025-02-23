@@ -1,15 +1,17 @@
 ﻿using Data.Entities;
-
-public interface IProductRepository
+namespace Infrastructure.Interfaces
 {
-   Task <List<Product>> GetAllAsync();
+    public interface IProductRepository
+    {
+        Task<List<Product>> GetAllAsync();
 
-  Task CreateAsync(Product product);
+        Task CreateAsync(Product product);
 
-   Task<Product> GetByIdAsync(int id);
+        Task<Product> GetByIdAsync(int id);
 
- Task UpdateAsync(Product product);
+        Task UpdateAsync(Product product);
 
-   Task DeleteAsync(int id);
-     
+        Task DeleteAsync(int id);
+
+    }
 }
