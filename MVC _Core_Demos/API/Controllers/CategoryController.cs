@@ -1,25 +1,38 @@
-﻿using Data.Entities;
+﻿using Asp.Versioning;
+using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Services.Interfaces;
 
 namespace API.Controllers
 {
+    
+    [Route("api/v{version:ApiVersion}/[controller]")]
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
-
-        public CategoryController(ICategoryService categoryService)
+        private readonly IMemoryCache _memoryCache;
+        public CategoryController(ICategoryService categoryService,IMemoryCache memoryCache)
         {
             _categoryService = categoryService;
+            _memoryCache = memoryCache;
         }
 
-        [HttpGet]      
+        [HttpGet]
+        
         public async Task<IActionResult> Get()
         {
-            var categories = await _categoryService.GetAllAsync();
-            return Ok(categories);
+
+            //creating cache
+            IEnumerable<CategoryModel> categories = _memoryCache.Get("categories") as List<CategoryModel>;
+            if (categories==null)
+            {
+                 categories = await _categoryService.GetAllAsync();
+                _memoryCache.Set("categories", categories);
+            }
+           return Ok(categories);
         }
 
         [HttpGet]

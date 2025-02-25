@@ -32,7 +32,7 @@ namespace WebClient.Controllers
         {
             if (ModelState.IsValid)
             {
-                _clientService.PostAsync<Product>("category",product);
+                _clientService.PostAsync<Product>("product",product);
             }
             return null;
         }

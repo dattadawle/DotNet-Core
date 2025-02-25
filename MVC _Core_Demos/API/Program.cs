@@ -1,7 +1,9 @@
+using Asp.Versioning;
 using Data;
 using Infrastructure.Implementations;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
+
 using Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,13 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddMemoryCache();
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1,0);
+    options.AssumeDefaultVersionWhenUnspecified=true;  // default version
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
