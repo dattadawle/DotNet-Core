@@ -18,8 +18,8 @@ namespace WebClient.Controllers
         [HttpGet]
         public async Task <IActionResult> Index()
         {
-          var categories=  await _clientService.GetTAsync<List<Product>>("category");
-            return View();
+          var categories=  await _clientService.GetTAsync<List<ProductModel>>("category");
+            return View(categories);
         }
         [HttpGet]
         public IActionResult Create()

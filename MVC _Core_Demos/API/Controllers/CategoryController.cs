@@ -100,7 +100,7 @@ namespace API.Controllers
               {
                   
                       _categoryService.DeleteAsync(id);
-                      return Ok();
+                      return Ok(category);
               }
               else
                 {

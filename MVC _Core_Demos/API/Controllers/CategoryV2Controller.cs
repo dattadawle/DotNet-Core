@@ -18,7 +18,7 @@ namespace API.Controllers
             _memoryCache = memoryCache;
         }
 
-        [HttpGet]
+       [HttpGet]
        [Route("GetCategories")]
         public async Task<IActionResult> Get()
         {
@@ -32,6 +32,5 @@ namespace API.Controllers
             }
             return Ok(categories.Take(2)); // will take only top 2 records
         }
-
     }
 }

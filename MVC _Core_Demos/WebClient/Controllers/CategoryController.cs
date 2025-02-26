@@ -190,7 +190,7 @@ namespace WebClient.Controllers
 
                  return RedirectToAction("Index");
              }*/
-            Category category = _clientService.GetTAsync<Category>($"category/{id}").Result;
+           // Category category = _clientService.GetTAsync<Category>($"category/{id}").Result;
             await _clientService.DeleteAsync<Category>($"category/{id}");
             return RedirectToAction("Index");
         }
