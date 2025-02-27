@@ -30,7 +30,7 @@ namespace API.Controllers
             if (categories==null)
             {
                  categories = await _categoryService.GetAllAsync();
-                _memoryCache.Set("categories", categories);
+                _memoryCache.Set("categories", categories,TimeSpan.FromMinutes(1));
             }
            return Ok(categories);
         }
@@ -89,7 +89,7 @@ namespace API.Controllers
               return BadRequest();
           }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
       
           public async Task< IActionResult> Delete(int id)
           {
