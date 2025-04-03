@@ -8,10 +8,10 @@ namespace FirstCoreWebAPI.Models
             base(options) 
         {
 
-
         }
 
         public DbSet<Category> categories { get; set; }
+
     }
       
     }
