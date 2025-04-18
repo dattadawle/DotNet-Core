@@ -19,7 +19,7 @@ public class HttpClientService : IHttpClientService
             return await response.Content.ReadFromJsonAsync<T>();
         }
 
-        public async Task<T> GetTAsync<T>(string requestUri)
+        public async Task<T> GettAsync<T>(string requestUri)
         {
             var response = await _client.GetAsync(requestUri);
             response.EnsureSuccessStatusCode();

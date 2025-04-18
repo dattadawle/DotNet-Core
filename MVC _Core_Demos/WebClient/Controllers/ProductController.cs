@@ -18,7 +18,7 @@ namespace WebClient.Controllers
         [HttpGet]
         public async Task <IActionResult> Index()
         {
-          var categories=  await _clientService.GetTAsync<List<ProductModel>>("category");
+          var categories=  await _clientService.GettAsync<List<ProductModel>>("category");
             return View(categories);
         }
         [HttpGet]
@@ -42,7 +42,7 @@ namespace WebClient.Controllers
         {
             if (id>0)
             {
-                var prod = await _clientService.GetTAsync<ProductModel>($"product/{id}");
+                var prod = await _clientService.GettAsync<ProductModel>($"product/{id}");
                 return View(prod);
             }
            return RedirectToAction("Index");
@@ -63,7 +63,7 @@ namespace WebClient.Controllers
         {
             if (id>0)
             {
-              var prod= await   _clientService.GetTAsync<ProductModel>($"product/{id}");
+              var prod= await   _clientService.GettAsync<ProductModel>($"product/{id}");
                 return View(prod);
             }
             return RedirectToAction("Index");

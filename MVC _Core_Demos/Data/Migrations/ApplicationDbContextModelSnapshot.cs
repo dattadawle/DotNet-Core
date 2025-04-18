@@ -41,7 +41,7 @@ namespace Data.Migrations
                     b.ToTable("categories");
                 });
 
-            modelBuilder.Entity("Data.Entities.Product", b =>
+            modelBuilder.Entity("Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,7 +74,108 @@ namespace Data.Migrations
                     b.ToTable("products");
                 });
 
-            modelBuilder.Entity("Data.Entities.Product", b =>
+            modelBuilder.Entity("Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "user"
+                        });
+                });
+
+            modelBuilder.Entity("User", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            Email = "admin@gmail.com",
+                            Password = "123456"
+                        },
+                        new
+                        {
+                            id = 2,
+                            Email = "user@gmail.com",
+                            Password = "123456"
+                        });
+                });
+
+            modelBuilder.Entity("UserRoles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("userRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoleId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleId = 2,
+                            UserId = 2
+                        });
+                });
+
+            modelBuilder.Entity("Product", b =>
                 {
                     b.HasOne("Data.Entities.Category", "Category")
                         .WithMany("Products")
@@ -85,9 +186,38 @@ namespace Data.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("UserRoles", b =>
+                {
+                    b.HasOne("Role", "Roles")
+                        .WithMany("userRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Roles");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Data.Entities.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Role", b =>
+                {
+                    b.Navigation("userRoles");
+                });
+
+            modelBuilder.Entity("User", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }
