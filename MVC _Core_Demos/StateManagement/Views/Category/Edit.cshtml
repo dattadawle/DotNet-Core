@@ -1,7 +1,33 @@
 ﻿<h1>Category Edit View Page</h1>
 
+<p>Welcome, @TempData["name"]</p>
+
+@* @{
+    var userName = Context.Session.GetString("name");
+}
+<p>Welcome<strong>@userName</strong></p>
+
+
+@{
+    var customer = Context.Session.GetString("customer");
+
+    var customer1 = JsonSerializer.Deserialize<Customer>(customer);
+    <p>Name: @customer1.Name</p>
+    <p> Email : @customer1.Email</p>
+    <p>Age : @customer1.Age</p>
+}
+ *@
+@* 
 <p>Name : @ViewBag.Name</p>
 
 <p>Email : @ViewBag.Email</p>
 
 <p>Age : @ViewBag.Age</p>
+
+<h3>Complex data</h3>
+
+<p>Name : @ViewBag.customer.Name</p>
+<p> Email: @ViewBag.customer.Email</p>
+<p>Age : @ViewBag.customer.Age</p>
+
+ *@

@@ -1,7 +1,28 @@
 ﻿<h1>Category Details View Page</h1>
 
-<p>Name : @ViewBag.Name</p>
+@* <p>Welcome, @TempData["name"]</p> *@
+<p>Welcome, @TempData.Peek("name")</p>
+@* <p>Name : @ViewBag.Name</p>
 <p>Email : @ViewBag.Email</p>
-<p>Age  : @ViewBag.Age</p>
+<p>Age  : @ViewBag.Age</p> *@
 
-<a asp-controller="Category" asp-action="Edit">Redirect to Edit Page</a>
+@* <p>Name : @ViewData["name"]</p>
+<p>Email : @ViewBag.Email</p>
+
+<p> viewData using ViewBag : @ViewBag.name</p>
+<p> ViewBag using ViewData : @ViewData["Email"]</p> *@
+@* @{
+    var userName = Context.Session.GetString("name");
+}
+
+@{
+    var customer = Context.Session.GetString("customer");
+
+    var customer1 = JsonSerializer.Deserialize<Customer>(customer);
+    <p>Name: @customer1.Name</p>
+    <p> Email : @customer1.Email</p>
+    <p>Age : @customer1.Age</p>
+}
+<p>Welcome<strong>@userName</strong></p>
+*@
+<a asp-controller="Category" asp-action="Edit">Redirect to  Edit Page</a>

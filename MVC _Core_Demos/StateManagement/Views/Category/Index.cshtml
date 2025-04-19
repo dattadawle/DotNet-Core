@@ -1,4 +1,31 @@
-﻿<h1>Category Index View Page</h1>
+﻿
+<h1>Category Index View Page</h1>
+
+@* <p>Welcome, @TempData["name"]</p> *@
+
+<p> Welcome, @TempData.Peek("name")</p>
+
+<h3> Complex Data in tempData</h3>
+@{
+    Customer customer = TempData["user"] as Customer;
+    <p>name : @customer.Name</p>
+    <p> Email : @customer.Email</p>
+    <p> Age : @customer.Age</p>
+}
+
+@* @{
+    var userName = Context.Session.GetString("name");
+}
+
+@{
+    //var customer = Context.Session.GetString("customer");
+
+    Customer customer1 = JsonSerializer.Deserialize<Customer>(Context.Session.GetString("customer"));
+    <p>Name: @customer1.Name</p>
+    <p> Email : @customer1.Email</p>
+    <p>Age : @customer1.Age</p>
+}
+<p>Welcome<strong>@userName</strong></p> *@
 
 <form asp-controller="Category" asp-action="Details" method="get">
     <input type="hidden" name="Age" value="25" />
